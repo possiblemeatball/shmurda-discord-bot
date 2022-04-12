@@ -1,21 +1,20 @@
 package net.manthrowshat.shmurdabot.main;
 
 import net.manthrowshat.shmurdabot.DiscordBot;
+import net.manthrowshat.shmurdabot.spring.BotSpringApplication;
 import org.apache.commons.cli.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * Main class that grabs arguments as necessary and starts Spring
  *
  * @author mwalker
  */
-@SpringBootApplication
-public class BotSpringApplication {
+public class BotJavaStart {
     private static final Options commandLineFlags;
     /**
      * public static void main
@@ -36,14 +35,10 @@ public class BotSpringApplication {
             if (!line.hasOption("t")) throw new ParseException("no bot token specified");
             String botToken = line.getOptionValue("t");
 
-            SpringApplication spring = new SpringApplication(BotSpringApplication.class);
-
-            ConfigurableApplicationContext context = spring.run(line.getArgs());
+            BotSpringApplication.springmain(args);
         } catch (ParseException e) {
             System.err.println("shmurdabot: error starting up: " + e.getLocalizedMessage());
         }
-
-
     }
 
     static {

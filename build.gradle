@@ -6,7 +6,7 @@ plugins {
 
 group 'net.manthrowshat'
 version '1.0-SNAPSHOT'
-mainClassName = 'com.example.jda.Bot'
+mainClassName = 'net.manthrowshat.shmurdabot.main.BotJavaMain'
 
 def jdaVersion = '5.0.0-alpha.9'
 
